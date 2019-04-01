@@ -1,0 +1,9 @@
+body {
+	background: pink;
+}
+
+#photo1 {
+	height: 100px
+	width: 100px;
+	border: 10px solid black;
+}
