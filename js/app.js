@@ -29,18 +29,48 @@ class Tamagotchi {
 }
 
 const game = {
-	toma: null,
+	tama: '',
 	lights: true,
-	startGame() {//tamagotchi is born
-		console.log("I'm alive! Tamagotchi is borne");
-		// instantiate new tomagotchi
-		// const t = new Tomagotchi('asdf')
+	start() {//tamagotchi is born
+		console.log("I'm alive! Tamagotchi is born");
+		// instantiate new tomagotchi//
+		const babyT = new Tamagotchi("pepe")	
+		//store tamagotchi in variable tama
+		let tama = babyT
+		console.log(tama);
+		//enterName()//
 	},
-	turnLightOff (sleep) {
-		console.log("zzzZZZZZZzzz!");
-	}
 
+	// turnLightOff () {
+	// 	console.log("lights off");
+	// 	//turns lights off
+	// 	//makes tamagotchi go to sleep
+	// 	sleep();
+	
 }
+
+
+
+//jQuery--- game interaction
+
+//Create event listener to start-btn
+//We want event listener to start game by calling game.startGame function
+//We want to change the display in the css for form
+
+	$('#start-btn').on('click', () => {
+	console.log("button works");
+	game.start();//instatiate baby tamagotchi
+	$('.name-input').css('display','flex');
+});
+
+//Create event listener for the form button 
+//make sure to add e.preventDefault() to stop it form refreshing the webpage
+//make tamagotchi1 div appear
+	$('#assign-name').on('click', (e) => {
+		e.preventDefault();
+		console.log("name assigned");
+		$('#tama1').css('display', 'flex')
+	});
 
 
 
