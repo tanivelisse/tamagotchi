@@ -31,17 +31,15 @@ class Tamagotchi {
 const game = {
 	tama: '',
 	lights: true,
-	start() {//tamagotchi is born
-		console.log("I'm alive! Tamagotchi is born");
-		// instantiate new tomagotchi//
-		const babyT = new Tamagotchi("pepe")	
-		//store tamagotchi in variable tama
-		let tama = babyT
-		console.log(tama);
+	interval: '',//Pending set up
+	
 	},
 	enterName() {
 		let nameGiven = $('#input-box').val()
 		console.log(nameGiven);
+		const babyT = new Tamagotchi(nameGiven)	
+		let tama = babyT
+		console.log(tama);
 		}
 
 	// turnLightOff () {
@@ -75,6 +73,8 @@ const game = {
 		$('#tama1').css('display', 'flex')
 		game.enterName();
 	});
+
+
 
 
 
