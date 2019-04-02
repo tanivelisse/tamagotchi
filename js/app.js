@@ -38,8 +38,11 @@ const game = {
 		//store tamagotchi in variable tama
 		let tama = babyT
 		console.log(tama);
-		//enterName()//
 	},
+	enterName() {
+		let nameGiven = $('#input-box').val()
+		console.log(nameGiven);
+		}
 
 	// turnLightOff () {
 	// 	console.log("lights off");
@@ -70,7 +73,9 @@ const game = {
 		e.preventDefault();
 		console.log("name assigned");
 		$('#tama1').css('display', 'flex')
+		game.enterName();
 	});
+
 
 
 
