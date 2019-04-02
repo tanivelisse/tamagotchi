@@ -1,21 +1,76 @@
 body {
 	background: pink;
+	display: center;
+	font-family: 'Fredoka One', cursive;
+}
+
+#start-btn {
+	border-color: hotpink;
+	border-width: 10px;
+	border-radius: 100px;
+	height: 80px;
+	align-content: center;
+	font-family: 'Fredoka One', cursive;
+	font-size: 50px;
 }
 
 .name-input {
 	display: none;
 }
 
+#input-box {
+	width: 300px;
+	height: 75px;
+	border-radius: 20px;
+	font-family: 'Fredoka One', cursive;
+	font-size: 50px;
+}
+
+#assign-name {
+	border-color: hotpink;
+	border-width: 10px;
+	border-radius: 100px;
+	height: 80px;
+	align-content: center;
+	font-family: 'Fredoka One', cursive;
+	font-size: 50px;
+}
+
 #tama1 {
 	background: hotpink;
 	height: 130px;
 	width: 200px;
-	border:10px solid black;
+	border:10px solid purple;
 	border-radius: 60px;
-	color: solid black;
+	color: purple;
 	font-size: 75px;
 	display: none;
 	justify-content: center;
-	/*align-content:center;*/
-	
+	/*align-content:center;*/	
+}
+
+#tama-says {
+	background: white;
+	height: 50px;
+	width: 200px;
+	border-style: solid;
+	border-color: black;
+	border-radius: 20px;
+	font-size:30px;
+	display: none;
+	justify-content: center;
+	align-content: flex-end;
+}
+
+.game-btns button {
+	display: none;
+	justify-content: flex-start;
+	align-items: flex-start; 
+	border-color: hotpink;
+	border-width: 10px;
+	border-radius: 100px;
+	height: 80px;
+	align-content: center;
+	font-family: 'Fredoka One', cursive;
+	font-size: 50px;
 }

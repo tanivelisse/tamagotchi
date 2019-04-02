@@ -32,14 +32,16 @@ const game = {
 	tama: '',
 	lights: true,
 	interval: '',//Pending set up
-	
-	},
 	enterName() {
-		let nameGiven = $('#input-box').val()
+		nameGiven = $('#input-box').val()
 		console.log(nameGiven);
 		const babyT = new Tamagotchi(nameGiven)	
-		let tama = babyT
+		tama = babyT
 		console.log(tama);
+		$('#start-btn').css('display','none');
+		$('#input-box').val('')
+		$('.name-input').css('display','none');
+		$('#tama-says').append(`Hi I'm ${nameGiven}!`).css('display','flex');
 		}
 
 	// turnLightOff () {
@@ -60,7 +62,6 @@ const game = {
 
 	$('#start-btn').on('click', () => {
 	console.log("button works");
-	game.start();//instatiate baby tamagotchi
 	$('.name-input').css('display','flex');
 });
 
@@ -71,6 +72,7 @@ const game = {
 		e.preventDefault();
 		console.log("name assigned");
 		$('#tama1').css('display', 'flex')
+		$('.game-btns button').css('display', 'flex');
 		game.enterName();
 	});
 
