@@ -32,18 +32,18 @@ const game = {
 	tama: '',
 	lights: true,
 	interval: '',//Pending set up
-	enterName() {
+	createTama() {
 		nameGiven = $('#input-box').val()
 		console.log(nameGiven);
 		const babyT = new Tamagotchi(nameGiven)	
-		tama = babyT
-		console.log(tama);
+		game.tama = babyT
+		//console.log(game.tama.);
 		$('#start-btn').css('display','none');
 		$('#input-box').val('')
 		$('.name-input').css('display','none');
 		$('#tama-says').append(`Hi I'm ${nameGiven}!`).css('display','flex');
+		$("#metrics").append(`Sleep ${game.tama.sleepiness} Hunger ${game.tama.hunger} Boredom ${game.tama.boredom}`)		
 		}
-
 	// turnLightOff () {
 	// 	console.log("lights off");
 	// 	//turns lights off
@@ -59,8 +59,7 @@ const game = {
 //Create event listener to start-btn
 //We want event listener to start game by calling game.startGame function
 //We want to change the display in the css for form
-
-	$('#start-btn').on('click', () => {
+$('#start-btn').on('click', () => {
 	console.log("button works");
 	$('.name-input').css('display','flex');
 });
@@ -68,13 +67,17 @@ const game = {
 //Create event listener for the form button 
 //make sure to add e.preventDefault() to stop it form refreshing the webpage
 //make tamagotchi1 div appear
-	$('#assign-name').on('click', (e) => {
-		e.preventDefault();
-		console.log("name assigned");
-		$('#tama1').css('display', 'flex')
-		$('.game-btns button').css('display', 'flex');
-		game.enterName();
-	});
+$('#assign-name').on('click', (e) => {
+	e.preventDefault();
+	console.log("name assigned");
+	$('#tama1').css('display', 'flex')
+	$('.game-btns button').css('display', 'flex');
+	game.createTama();
+});
+
+//display metrics
+
+
 
 
 
