@@ -52,6 +52,7 @@ class Tamagotchi {
 		console.log("R.I.P. Tamagotchi died because you are a bad parrent.");
 		$('#tama1').css('display', 'none')
 		$('#tama2').css('display', 'flex')
+		clearInterval(game.timerID);
 	}
 	// sleep() {
 	// 	if (game.tama.sleepiness !== 0) {
@@ -119,7 +120,6 @@ const game = {
 				console.log("Too tired");
 				this.tama.die()
 			}
-			$('#timer').text(`Clock: ${this.gameTime}`);
 			this.tama.grow();
 			} , 1000)
 	}, 
