@@ -34,6 +34,12 @@ class Tamagotchi {
 		game.displayMetrics();
 
 	}
+	sleep(){
+		if (game.tama.sleepiness !== 0){
+			this.sleepiness--;
+		}
+		game.displayMetrics();
+	}
 	die() {
 		console.log("R.I.P. Tamagotchi died because you are a bad parrent.");
 		$('#tama1').css('display', 'none')
@@ -49,6 +55,7 @@ class Tamagotchi {
 }
 
 const game = {
+	timerID: null,
 	gameTime: 0,
 	tama: '',
 	lights: true,
@@ -66,32 +73,46 @@ const game = {
 	
 	startTime() {
 		//console.log("time started");
-		this.gameTime = setInterval( () => {
-		console.log("time is running");
-		this.gameTime++;
-		if (this.gameTime % 5 === 0){
-			this.tama.hunger++
-			game.displayMetrics();
-		}
-		if (this.tama.hunger % 10 === 0){
-			this.tama.die()
-		}
-		if (this.gameTime % 5 === 0){
-			this.tama.boredom++
-			game.displayMetrics();
-		}
-		if (this.tama.boredom % 10 === 0){
-			this.tama.die()
-		}
-		if (this.gameTime % 5 === 0){
-			this.tama.sleepiness++
-			game.displayMetrics();
-		}
-		if (this.tama.sleepiness % 10 === 0){
-			this.tama.die()
-		}
-		$('#timer').text(`Clock: ${this.gameTime}`);
-		} , 1000)
+		this.timerID = setInterval( () => {
+			console.log(this.tama);
+			this.gameTime++;
+			if (this.lights === true && this.gameTime % 5 === 0){
+				this.tama.hunger++
+				game.displayMetrics();
+			}
+			if (this.tama.hunger >= 10){
+				console.log("Too hungry");
+				this.tama.die()
+			}
+			if (this.lights === true && this.gameTime % 5 === 0){
+				this.tama.boredom++
+				game.displayMetrics();
+			}
+			if (this.tama.boredom >= 10){
+				console.log("Too bored");
+				this.tama.die()
+			}
+			if (this.lights === true && this.gameTime % 5 === 0){
+				this.tama.sleepiness++
+				game.displayMetrics();
+			} else if (this.lights !== true && this.gameTime % 3 === 0){
+				if(this.tama.sleepiness !== 0){
+					this.tama.sleepiness--;
+				}
+				if (this.tama.boredom !== 0){
+					this.tama.boredom--;
+				}
+				if (this.tama.hunger !== 0){
+					this.tama.hunger--;
+				}
+				game.displayMetrics();
+			}
+			if (this.tama.sleepiness >= 10){
+				console.log("Too tired");
+				this.tama.die()
+			}
+			$('#timer').text(`Clock: ${this.gameTime}`);
+			} , 1000)
 	}, 
 
 	displayMetrics() {
@@ -108,26 +129,19 @@ const game = {
 
 	turnLightOffOn () {
 		if (game.lights === true) {
-		//console.log("lights off");
-		$('body').css('background', 'gray');
-		if (this.tama.sleepiness !== 0){
-			this.tama.sleepiness--;
-			this.displayMetrics();
-			}
-		game.lights = false;
-		console.log(game.lights);
+			//console.log("lights off");
+			$('body').css('background', 'gray');
+			game.lights = false;
+			//console.log(game.lights);
 		} 
 		else if (lights !== true) {
-		$('body').css('background', 'pink');
-		game.lights = true;
-		console.log(game.lights);
+			$('body').css('background', 'pink');
+			game.lights = true;
+			//console.log(game.lights);
 		}
 	},
 
 }
-
-
-
 
 //jQuery--- game interaction
 
