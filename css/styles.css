@@ -25,7 +25,7 @@ body {
 	height: 75px;
 	border-radius: 20px;
 	font-family: 'Fredoka One', cursive;
-	font-size: 50px;
+	font-size: 40px;
 }
 
 #assign-name {
@@ -42,6 +42,18 @@ body {
 	display: none;
 }
 
+#hunger {
+display: none;
+}
+
+#boredom {
+display: none;
+}
+
+#sleepiness {
+	display: none;
+}
+
 #tama1 {
 	background: hotpink;
 	height: 130px;
@@ -51,13 +63,14 @@ body {
 	color: purple;
 	font-size: 75px;
 	display: none;
-	justify-content: center;
-	/*align-content:center;*/	
+	justify-content: justify;
+	/*align-content:center;*/
+	text-align: center;	
 }
 
 #tama-says {
 	background: white;
-	height: 50px;
+	/*height: 50px;*/
 	width: 200px;
 	border-style: solid;
 	border-color: black;
@@ -65,7 +78,6 @@ body {
 	font-size:30px;
 	display: none;
 	justify-content: center;
-	align-content: flex-end;
 }
 
 .game-btns button {

@@ -21,10 +21,9 @@ class Tamagotchi {
 	eat() {
 		console.log("yum, yum, yum");
 		if (game.tama.hunger !== 0 ){
-			let currentHuger = this.hunger --
-			//console.log(this);
-			//console.log(this.hunger);
+			this.hunger --
 		}
+		game.displayMetrics();
 	
 	}
 	play() {
@@ -47,13 +46,12 @@ const game = {
 		nameGiven = $('#input-box').val();
 		console.log(nameGiven);
 		const babyT = new Tamagotchi(nameGiven);	
-		game.tama = babyT
+		this.tama = babyT
 		//console.log(game.tama.);
 		$('#start-btn').css('display','none');
 		$('#input-box').val('');
 		$('.name-input').css('display','none');
 		$('#tama-says').append(`Hi I'm ${nameGiven}!`).css('display','flex');
-		$('#metrics').append(`Sleep ${game.tama.sleepiness} | Hunger ${game.tama.hunger} | Boredom ${game.tama.boredom}`).text();
 	},
 	
 	startTime() {
@@ -61,9 +59,15 @@ const game = {
 		this.gameTime = setInterval( () => {
 		console.log("time is running");
 		this.gameTime++;
-		$('#timer').text(`Clock: ${this.gameTime++}`);
-		} , 10000)
+		$('#timer').text(`Clock: ${this.gameTime}`);
+		} , 1000)
 	}, 
+
+	displayMetrics() {
+		let hungerMetter = this.tama.hunger
+		console.log(this.tama.hunger);
+		$('#hunger').text(`Hunger ${hungerMetter}`);
+	},
 
 	turnLightOffOn () {
 		if (game.lights === true) {
@@ -96,10 +100,15 @@ $('#start-btn').on('click', () => {
 $('#assign-name').on('click', (e) => {
 	e.preventDefault();
 	console.log("name assigned");
+	$('#hunger').css('display', 'flex')
+	game.displayMetrics()
+	$('#boredom').css('display', 'flex')
+	$('#sleepiness').css('display', 'flex')
 	$('#timer').css('display', 'flex')
 	$('#tama1').css('display', 'flex')
 	$('.game-btns button').css('display', 'inline-block');
 	game.createTama();
+	game.displayMetrics();
 	game.startTime();
 });
 
