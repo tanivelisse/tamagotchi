@@ -1,10 +1,10 @@
 body {
 	background: pink;
 	display: center;
+	/*margin: 100px;*/
 	font-family: 'Fredoka One', cursive;
 	font-size: 20px;
 }
-
 
 #start-btn {
 	border-color: hotpink;
@@ -85,13 +85,14 @@ display: none;
 #tama-says {
 	background: white;
 	/*height: 50px;*/
-	width: 200px;
+	width: 300px;
 	border-style: solid;
 	border-color: black;
 	border-radius: 20px;
 	font-size:30px;
 	display: none;
 	justify-content: center;
+	text-align: center;
 }
 
 .game-btns button {

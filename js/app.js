@@ -6,10 +6,9 @@ class Tamagotchi {
 	constructor(name){
 		this.name = name;
 		this.age = 0;
-		this.sleepiness = 5;//The Tamagotchi wakes up rested (starts rested), but it's hungry (hunger goes up when it sleeps)
-		this.hunger = 5;//The first thing the Tamagotchi needs is to eat, eating will give it energy to play(the boredome goes up)
-		this.boredom = 1;//The Tamagotchi wants to play after eating (boredom goes down) and then the sleepiness will go up
-		
+		this.sleepiness = 5;
+		this.hunger = 5;
+		this.boredom = 1;
 	}
 	grow() {
 		//console.log("I'm growing! Tamagotchi is aging");
@@ -49,9 +48,10 @@ class Tamagotchi {
 		game.displayMetrics();
 	}
 	die() {
-		console.log("R.I.P. Tamagotchi died because you are a bad parrent.");
+		console.log("R.I.P. Tamagotchi died because you are a bad parent.");
 		$('#tama1').css('display', 'none')
 		$('#tama2').css('display', 'flex')
+		$('#tama-says').text(`${nameGiven} died because you are a bad parent.`);
 		clearInterval(game.timerID);
 	}
 	// sleep() {
