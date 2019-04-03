@@ -19,11 +19,17 @@ class Tamagotchi {
 		}
 	}
 	eat() {
-		this.hunger --
 		console.log("yum, yum, yum");
+		if (game.tama.hunger !== 0 ){
+			let currentHuger = this.hunger --
+			//console.log(this);
+			//console.log(this.hunger);
+		}
+	
 	}
-	play(game) {
+	play() {
 		console.log("Im playing!");
+
 	}
 	die() {
 		console.log("R.I.P. Tamagotchi died because you are a bad parrent.");
@@ -34,10 +40,9 @@ class Tamagotchi {
 }
 
 const game = {
-	gameTime: -1,
+	gameTime: 0,
 	tama: '',
 	lights: true,
-	interval: '',//Pending set up
 	createTama() {
 		nameGiven = $('#input-box').val();
 		console.log(nameGiven);
@@ -48,26 +53,31 @@ const game = {
 		$('#input-box').val('');
 		$('.name-input').css('display','none');
 		$('#tama-says').append(`Hi I'm ${nameGiven}!`).css('display','flex');
-		$("#metrics").append(`Sleep ${game.tama.sleepiness} | Hunger ${game.tama.hunger} | Boredom ${game.tama.boredom}`);		
+		$('#metrics').append(`Sleep ${game.tama.sleepiness} | Hunger ${game.tama.hunger} | Boredom ${game.tama.boredom}`).text();
 	},
-		// set time/ age
+	
 	startTime() {
 		//console.log("time started");
 		this.gameTime = setInterval( () => {
-			console.log("time is running");
-			this.gameTime++;
-
-			$('#timer').text(`Clock: ${this.gameTime++}`);
-		} , 1000)
-		
+		console.log("time is running");
+		this.gameTime++;
+		$('#timer').text(`Clock: ${this.gameTime++}`);
+		} , 10000)
 	}, 
-	
-	// turnLightOff () {
-	// 	console.log("lights off");
-	// 	//turns lights off
-	// 	//makes tamagotchi go to sleep
-	// 	sleep();
-	//	},
+
+	turnLightOffOn () {
+		if (game.lights === true) {
+		//console.log("lights off");
+		$('body').css('background', 'gray');
+		game.lights = false;
+		console.log(game.lights);
+		} else if (lights !== true) {
+		$('body').css('background', 'pink');
+		game.lights = true;
+		console.log(game.lights);
+		}
+	},
+
 }
 
 
@@ -75,18 +85,14 @@ const game = {
 
 //jQuery--- game interaction
 
-//Create event listener to start-btn
-//We want event listener to start game by calling game.startGame function
-//We want to change the display in the css for form
+//Event listener to start-btn and form display
 $('#start-btn').on('click', () => {
 	console.log("button works");
 	$('.name-input').css('display','flex');
 	$('#start-btn').css('display', 'none');
 });
 
-//Create event listener for the form button 
-//make sure to add e.preventDefault() to stop it form refreshing the webpage
-//make tamagotchi1 div appear
+//Event listener for the form button and game display
 $('#assign-name').on('click', (e) => {
 	e.preventDefault();
 	console.log("name assigned");
@@ -97,10 +103,10 @@ $('#assign-name').on('click', (e) => {
 	game.startTime();
 });
 
-
+//Event listeners for game buttons
 $('#feed').on('click', () => {
 	console.log("here comes the food");
-
+	game.tama.eat()
 })
 
 $('#play').on('click', () => {
@@ -110,6 +116,8 @@ $('#play').on('click', () => {
 
 $('#lights').on('click', () => {
 	console.log("lights off");
+	game.turnLightOffOn()
+	
 
 })
 
