@@ -27,15 +27,23 @@ class Tamagotchi {
 	
 	}
 	play() {
-		console.log("Im playing!");
+		if (game.tama.boredom !== 0) {
+			console.log("Im playing!");
+			this.boredom --
+		}
+		game.displayMetrics();
 
 	}
 	die() {
 		console.log("R.I.P. Tamagotchi died because you are a bad parrent.");
 	}
-	sleep() {
-		// 
-	}
+	// sleep() {
+	// 	if (game.tama.sleepiness !== 0) {
+	// 		console.log("Im sleeping!");
+	// 		this.sleepiness --
+	// 	}
+	// 	game.displayMetrics();
+	// }
 }
 
 const game = {
@@ -67,15 +75,26 @@ const game = {
 		let hungerMetter = this.tama.hunger
 		console.log(this.tama.hunger);
 		$('#hunger').text(`Hunger ${hungerMetter}`);
+
+		let boredomMetter = this.tama.boredom
+		$('#boredom').text(`Boredom ${boredomMetter}`);
+
+		let sleepinessMetter = this.tama.sleepiness
+		$('#sleepiness').text(`Sleepiness ${sleepinessMetter}`);
 	},
 
 	turnLightOffOn () {
 		if (game.lights === true) {
 		//console.log("lights off");
 		$('body').css('background', 'gray');
+		if (this.tama.sleepiness !== 0){
+			this.tama.sleepiness--;
+			this.displayMetrics();
+			}
 		game.lights = false;
 		console.log(game.lights);
-		} else if (lights !== true) {
+		} 
+		else if (lights !== true) {
 		$('body').css('background', 'pink');
 		game.lights = true;
 		console.log(game.lights);
@@ -120,7 +139,7 @@ $('#feed').on('click', () => {
 
 $('#play').on('click', () => {
 	console.log("Game time!");
-
+	game.tama.play()
 })
 
 $('#lights').on('click', () => {
