@@ -2,6 +2,7 @@ body {
 	background: pink;
 	display: center;
 	font-family: 'Fredoka One', cursive;
+	font-size: 20px;
 }
 
 #start-btn {
@@ -33,7 +34,7 @@ body {
 	height: 80px;
 	align-content: center;
 	font-family: 'Fredoka One', cursive;
-	font-size: 50px;
+	font-size: 20px;
 }
 
 #timer {

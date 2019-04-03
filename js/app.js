@@ -13,10 +13,10 @@ class Tamagotchi {
 	}
 	grow() {
 		//console.log("I'm growing! Tamagotchi is aging");
-		if(gameTime % 3 === 0) {
+		if(game.gameTime % 3 === 0) {
 			this.age ++
+			//console.log(this.age);
 		}
-		//console.log(this.age);
 	}
 	eat() {
 		this.hunger --
@@ -52,16 +52,16 @@ const game = {
 	},
 		// set time/ age
 	startTime() {
-		console.log("time started");
+		//console.log("time started");
 		this.gameTime = setInterval( () => {
 			console.log("time is running");
-			let aging = this.gameTime++;
-			game.tama.grow(aging)
-			$('#timer').text(`Clock: ${aging}`);
+			this.gameTime++;
+
+			$('#timer').text(`Clock: ${this.gameTime++}`);
 		} , 1000)
 		
 	}, 
-
+	
 	// turnLightOff () {
 	// 	console.log("lights off");
 	// 	//turns lights off
@@ -98,7 +98,20 @@ $('#assign-name').on('click', (e) => {
 });
 
 
+$('#feed').on('click', () => {
+	console.log("here comes the food");
 
+})
+
+$('#play').on('click', () => {
+	console.log("Game time!");
+
+})
+
+$('#lights').on('click', () => {
+	console.log("lights off");
+
+})
 
 
 
