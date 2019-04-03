@@ -6,14 +6,14 @@ class Tamagotchi {
 	constructor(name){
 		this.name = name;
 		this.age = null;
-		this.sleepiness = 1;//The Tamagotchi wakes up rested (starts rested), but it's hungry (hunger goes up when it sleeps)
+		this.sleepiness = 5;//The Tamagotchi wakes up rested (starts rested), but it's hungry (hunger goes up when it sleeps)
 		this.hunger = 5;//The first thing the Tamagotchi needs is to eat, eating will give it energy to play(the boredome goes up)
 		this.boredom = 1;//The Tamagotchi wants to play after eating (boredom goes down) and then the sleepiness will go up
 		
 	}
 	grow() {
 		//console.log("I'm growing! Tamagotchi is aging");
-		if(game.gameTime % 3 === 0) {
+		if(game.gameTime % 5 === 0) {
 			this.age ++
 			//console.log(this.age);
 		}
@@ -36,6 +36,8 @@ class Tamagotchi {
 	}
 	die() {
 		console.log("R.I.P. Tamagotchi died because you are a bad parrent.");
+		$('#tama1').css('display', 'none')
+		$('#tama2').css('display', 'flex')
 	}
 	// sleep() {
 	// 	if (game.tama.sleepiness !== 0) {
@@ -67,6 +69,27 @@ const game = {
 		this.gameTime = setInterval( () => {
 		console.log("time is running");
 		this.gameTime++;
+		if (this.gameTime % 5 === 0){
+			this.tama.hunger++
+			game.displayMetrics();
+		}
+		if (this.tama.hunger % 10 === 0){
+			this.tama.die()
+		}
+		if (this.gameTime % 5 === 0){
+			this.tama.boredom++
+			game.displayMetrics();
+		}
+		if (this.tama.boredom % 10 === 0){
+			this.tama.die()
+		}
+		if (this.gameTime % 5 === 0){
+			this.tama.sleepiness++
+			game.displayMetrics();
+		}
+		if (this.tama.sleepiness % 10 === 0){
+			this.tama.die()
+		}
 		$('#timer').text(`Clock: ${this.gameTime}`);
 		} , 1000)
 	}, 

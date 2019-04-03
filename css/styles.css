@@ -68,6 +68,20 @@ display: none;
 	text-align: center;	
 }
 
+#tama2 {
+	background: blue;
+	height: 130px;
+	width: 200px;
+	border:10px solid lightblue;
+	border-radius: 60px;
+	color: black;
+	font-size: 75px;
+	display: none;
+	justify-content: justify;
+	/*align-content:center;*/
+	text-align: center;	
+}
+
 #tama-says {
 	background: white;
 	/*height: 50px;*/
